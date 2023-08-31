@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">App01</string>
+    <string name="welcome_register">歡迎註冊</string>
+    <string name="account_msg">請輸入帳號</string>
+    <string name="password_msg">請輸入密碼</string>
+    <string name="register_button">註冊</string>
+    <string name="login_button">登入</string>
+    <string name="flower">TODO</string>
+    <string name="check_password">請再次輸入密碼</string>
+    <string name="BackButton">返回</string>
 </resources>
