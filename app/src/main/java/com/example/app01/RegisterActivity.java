@@ -38,7 +38,7 @@ public class RegisterActivity extends Activity {
 
         //註冊按鍵
         // 創建 DBHelper 實例
-        DBHelper dbHelper = new DBHelper(this, "CameraDB", null, 1);
+        DBHelper dbHelper = new DBHelper(this, "SampleList.db", null, 1);
 
         // 檢查資料庫是否存在，如果不存在則創建
         dbHelper.checkDBTable();

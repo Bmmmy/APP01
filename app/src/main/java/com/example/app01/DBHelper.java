@@ -10,8 +10,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBHelper extends SQLiteOpenHelper{
     //版本
     private final static int DBVersion = 1;
-    private final static String DBName = "CameraDB.db";
-    private final static String TableName = "CameraDB";
+    private final static String DBName = "SampleList.db";
+    private final static String TableName = "SampleList";
 
     public DBHelper(Context context, String name, CursorFactory factory, int version){
         super(context, name, factory, version);
