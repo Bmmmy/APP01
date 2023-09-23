@@ -62,22 +62,39 @@ public class RegisterActivity extends Activity {
                 String password = passwordEditText.getText().toString();
                 String checkPd = checkPdEditText.getText().toString();
 
-                // 將資料新增到資料庫
-                boolean checkRegister = dbHelper.registerFunction(account, password, checkPd);
-
-                if(checkRegister){
-                    //show成功字樣
-                    showToast("新增成功");
-                    // 清空輸入欄位
-                    accountEditText.setText("");
+                //檢查密碼是否一樣
+                if(!password.equals(checkPd)){
+                    showToast("密碼錯誤，請重新輸入密碼!");
                     passwordEditText.setText("");
                     checkPdEditText.setText("");
+                }else {
+                    //密碼一樣後檢查帳號是否重複
 
-                }else{
-                    //show 失敗字樣
-                    showToast("新增失敗，請重新輸入!");
+                    // 先將資料去資料庫查看是否有已有同樣名稱使用者存在
+                    boolean CheckUserExists = dbHelper.checkIfUserExists(account);
+
+                    if (CheckUserExists) {
+                        //若帳號已存在，顯示訊息then清空輸入欄位
+                        showToast("註冊失敗! \n 該帳號已存在!");
+                    } else {
+                        // 將資料新增到資料庫
+                        boolean checkRegister = dbHelper.registerFunction(account, password, checkPd);
+
+                        if (checkRegister) {
+                            //show成功字樣
+                            showToast("新增成功");
+                            // 清空輸入欄位
+                            accountEditText.setText("");
+                            passwordEditText.setText("");
+                            checkPdEditText.setText("");
+
+                        } else {
+                            //show 失敗字樣
+                            showToast("新增失敗，請重新輸入!");
+                        }
+
+                    }
                 }
-
             }
         });
 
