@@ -75,9 +75,20 @@ public class DBHelper extends SQLiteOpenHelper{
         return result != -1;
     }
 
-    public boolean checkIfUserExists(String account){
+    public boolean CheckIfAccountExists(String account){
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.query(TableName, new String[]{"Account"},"Account = ?", new String[]{account},null,null,null);
+        boolean userExists = cursor != null && cursor.getCount() > 0;
+
+        if (cursor != null) {
+            cursor.close();
+        }
+        return userExists;
+    }
+
+    public boolean CheckIfUserExists(String account, String password){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query(TableName, new String[]{"Account"},"Account = ? AND Password = ?", new String[]{account, password},null,null,null);
         boolean userExists = cursor != null && cursor.getCount() > 0;
 
         if (cursor != null) {

@@ -48,7 +48,6 @@ public class RegisterActivity extends Activity {
         passwordEditText = findViewById(R.id.editTextText4);
         checkPdEditText = findViewById(R.id.editTextText5);
 
-
         registerButton = findViewById(R.id.button3);
 
 
@@ -71,9 +70,9 @@ public class RegisterActivity extends Activity {
                     //密碼一樣後檢查帳號是否重複
 
                     // 先將資料去資料庫查看是否有已有同樣名稱使用者存在
-                    boolean CheckUserExists = dbHelper.checkIfUserExists(account);
+                    boolean CheckAccountExists = dbHelper.CheckIfAccountExists(account);
 
-                    if (CheckUserExists) {
+                    if (CheckAccountExists) {
                         //若帳號已存在，顯示訊息then清空輸入欄位
                         showToast("註冊失敗! \n 該帳號已存在!");
                     } else {
